@@ -1,11 +1,11 @@
 <%- include('partials/header') %> 
 
-<h1>Compose Blog</h1>
+<h1 class="h1">Compose Blog</h1>
 
 <form action="/compose" method="post">
-    <p class="lead">Title</p>
+    <label for="Title" class="lead">Title</label>
     <input type="text" class="form-control" name="composeText"><br>
-    <p class="lead">Post</p>
+    <label for="post" class="lead">Post</label>
     <textarea class="form-control" name="composeText" id="" cols="30" rows="10"></textarea>
     <button class="btn btn-primary" type="submit" name="button">Publish</button>
 </form>
