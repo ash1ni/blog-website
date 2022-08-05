@@ -59,14 +59,16 @@ app.post('/compose',(req,res)=>{
 
 })
 app.get("/posts/:postName", (req,res)=>{
-  const requestedTitle = req.params.postName
+  const requestedTitle = _.lowerCase(req.params.postName)
+
   posts.forEach((post)=>{
-    const storedTitle = post.title
+    const storedTitle = _.lowerCase(post.title)
 
     if(storedTitle === requestedTitle){
-      console.log("match found")
-    } else{
-      console.log("not a match")
+      res.render("post",{
+        title: post.title,
+        content: post.content
+      })
     }
   })
 
