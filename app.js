@@ -87,19 +87,28 @@ app.post('/compose',(req,res)=>{
   
 
 })
-app.get("/posts/:postName", (req,res)=>{
-  const requestedTitle = _.lowerCase(req.params.postName)
-
-  posts.forEach((post)=>{
-    const storedTitle = _.lowerCase(post.title)
-
-    if(storedTitle === requestedTitle){
+app.get("/posts/:postId", (req,res)=>{
+  const requestedPostId = req.params.postId
+  Post.findOne({_id: requestedPostId}, (err, post)=>{
+    if(err){
+      console.log(err)
+    }else{
       res.render("post",{
         title: post.title,
         content: post.content
       })
+
     }
   })
+  // const requestedTitle = _.lowerCase(req.params.postName)
+
+  // posts.forEach((post)=>{
+  //   const storedTitle = _.lowerCase(post.title)
+
+  //   if(storedTitle === requestedTitle){
+      
+  //   }
+  // })
 
 })
 
